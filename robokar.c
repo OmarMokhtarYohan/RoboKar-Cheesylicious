@@ -1,7 +1,8 @@
 /*
  *   ROBOSAMPLE.C -- A sample/template for RoboKar program with uCOS-II
  *   Written by: Rosbi Mamat 6/5/2014
- *   Updated : 1/5/2023 Modified to show proximity & light sensor usage
+ *   Updated : 23/6/2024 Modified to show proximity & light sensor usage
+ 	 Updated by : Team Cheezylicious
  */
 
 #include "..\inc\kernel.h"                  /* Always include these to use uCOS-II      */
@@ -72,70 +73,7 @@ void Navig (void *data)
                 robo_motorSpeed(myrobot.lspeed, myrobot.rspeed);
                 OSTimeDlyHMSM(0, 0, 0, 5000);
 
-                /*for (;;)
-                {
-                    // turn right slow
-                    if (robo_lineSensor() == 1){
-                        myrobot.rspeed   = 20;
-                        myrobot.lspeed   = 40;
-
-                    // turn right fast
-                    } else if (robo_lineSensor() == 3){
-                        myrobot.rspeed   = -30;
-                        myrobot.lspeed   = 40;
-
-                    // Forward slow
-                    } else if (robo_lineSensor() == 2){
-                        myrobot.rspeed   = 50;       
-                        myrobot.lspeed   = 50;
-
-                    // turn left fast
-                    } else if (robo_lineSensor() == 6){
-                        myrobot.rspeed   = 40;
-                        myrobot.lspeed   = -30;
-                        robo_motorSpeed(myrobot.lspeed, myrobot.rspeed);
-                        OSTimeDlyHMSM(0, 0, 0, 400);
-
-                    // turn left slow
-                    } else if (robo_lineSensor() == 4){
-                        myrobot.rspeed   = 50;
-                        myrobot.lspeed   = -30;
-
-                    } else if (robo_lineSensor() == 5){
-                        myrobot.rspeed   = 40;
-                        myrobot.lspeed   = 40;
-
-                    } else if (robo_lineSensor() == 7){
-                        myrobot.rspeed   = 50;       
-                        myrobot.lspeed   = 50;
-                    
-                    // STOP
-                    } else if (robo_lineSensor() == 0) {
-                        myrobot.rspeed   = -35;
-                        myrobot.lspeed   = -25;
-                    } else if (myrobot.obstacle == 1)  {
-                        myrobot.rspeed   =  0;  //stop
-            			myrobot.lspeed   =  0;
-
-            			robo_motorSpeed(myrobot.lspeed, myrobot.rspeed);
-            			OSTimeDlyHMSM(0, 0, 0, 600); 
-
-            			myrobot.rspeed   =  -50;  //turn to right
-            			myrobot.lspeed   =  80;
-
-            			robo_motorSpeed(myrobot.lspeed, myrobot.rspeed);
-            			OSTimeDlyHMSM(0, 0, 0, 180); 
-
-            			myrobot.rspeed   =  50;  //straight
-            			myrobot.lspeed   =  50;
-
-            			robo_motorSpeed(myrobot.lspeed, myrobot.rspeed);
-            			OSTimeDlyHMSM(0, 0, 2, 0);
-                    }
-
-                    robo_motorSpeed(myrobot.lspeed, myrobot.rspeed);
-                    OSTimeDlyHMSM(0, 0, 0, 5);
-                }*/
+                
             }
             // turn right slow
             if (robo_lineSensor() == 1){
@@ -176,7 +114,7 @@ void Navig (void *data)
                 myrobot.lspeed   = -35;
 				OSTimeDlyHMSM(0, 0, 0, 100);
             }
-        } else if (myrobot.obstacle == 1 && robo_lineSensor() == 0)  {
+        } else if (myrobot.obstacle == 1 && robo_lineSensor() == 0)  { //Obstacle
             myrobot.rspeed   =  0;  //stop
             myrobot.lspeed   =  0;
 
@@ -196,7 +134,7 @@ void Navig (void *data)
             OSTimeDlyHMSM(0, 0, 2, 0); 
         }else if(myrobot.obstacle == 1 && (robo_lineSensor() == 1 
 		|| robo_lineSensor() == 2 || robo_lineSensor() == 3 || robo_lineSensor() == 4 
-		|| robo_lineSensor() == 5 || robo_lineSensor() == 6 || robo_lineSensor() == 7)){
+		|| robo_lineSensor() == 5 || robo_lineSensor() == 6 || robo_lineSensor() == 7)){ // Roundabout
 		    myrobot.rspeed   =  0;  //stop
             myrobot.lspeed   =  0;
 			robo_motorSpeed(myrobot.lspeed, myrobot.rspeed);
